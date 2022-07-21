@@ -1,0 +1,55 @@
+:root{
+    --floor: #008000;
+    --lift-1: #a52a2a;
+    --lift-2: #faebd7;
+    --lift-3: #9932cc;
+
+}
+.container{
+    width: 60%;
+    margin: auto;
+    padding: 1em 0;
+}
+.liftClass{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.liftClass .lift{
+    background: blue;
+    height: 3em;
+    background-color: var(--floor);
+    width: 0.5em;
+    position: relative;
+}
+.liftClass .lift-box{
+    position: absolute;
+    bottom: 0em;
+    background-color: var(--lift-1);
+    height: 3em;
+    width: 2.4em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s all;
+}
+.floorClass .maintence{
+    height: 3em;
+    border: 1px solid black;
+    align-content: center;
+    width: 23em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.floorClass .maintence-button{
+    border: none;
+    background: none;
+    font-size: 1em;
+    font-weight: 550;
+}
+.floorClass .floor{
+    display: flex;
+    flex-direction: column;
+}
