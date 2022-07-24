@@ -1,55 +1,497 @@
-:root{
-    --floor: #008000;
-    --lift-1: #a52a2a;
-    --lift-2: #faebd7;
-    --lift-3: #9932cc;
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --floor: #3A4750;
+    --lift-1: #F6C90E;
+    /* --floor: #3E432E;
+    --lift-1: #A7D129; */
+    /* --floor: #115173;
+    --lift-1: #FFD700; */
 
 }
-.container{
+
+body {
+    font-family: 'Quicksand', sans-serif;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--floor);
+    height: 3em;
+}
+
+.container {
     width: 60%;
-    margin: auto;
+    margin: 2em auto;
     padding: 1em 0;
 }
-.liftClass{
+
+.change-button {
+    outline: none;
+    color: var(--lift-1);
+    font-weight: 600;
+    padding: 0.5em;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: fit-content;
+    cursor: pointer;
+}
+
+.change-button:hover {
+    color: white;
+}
+
+.liftClass {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.liftClass .lift{
-    background: blue;
-    height: 3em;
+
+.liftClass-inside {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.liftClass .lift {
+    height: 3rem;
     background-color: var(--floor);
     width: 0.5em;
     position: relative;
 }
-.liftClass .lift-box{
+
+.liftClass .lift-box {
     position: absolute;
-    bottom: 0em;
+    bottom: 0;
+    left: -1em;
+    right: 1em;
     background-color: var(--lift-1);
-    height: 3em;
+    height: 3rem;
     width: 2.4em;
     color: white;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 1s all;
+    /* transition: 1s all; */
 }
-.floorClass .maintence{
-    height: 3em;
+
+.floorClass {
+    margin-left: 5rem;
+}
+
+.floorClass .maintence {
+    height: 3rem;
     border: 1px solid black;
+    border-bottom: none;
     align-content: center;
     width: 23em;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: center;
 }
-.floorClass .maintence-button{
+
+.floorClass :first-child {
+    border-top-left-radius: 0.8rem;
+    border-top-right-radius: 0.8rem;
+}
+
+.floorClass :last-child {
+    border-bottom-left-radius: 0.8rem;
+    border-bottom-right-radius: 0.8rem;
+}
+
+.floorClass :last-child {
+    border-bottom: 1px solid black;
+}
+
+.floorClass .maintence:hover {
+    cursor: pointer;
+    background-color: rgb(245, 242, 242);
+}
+
+.floorClass .maintence-button {
     border: none;
     background: none;
     font-size: 1em;
     font-weight: 550;
+    height: 3rem;
 }
-.floorClass .floor{
+
+.floorClass .floor {
     display: flex;
     flex-direction: column;
+}
+
+.maintence-box-inside {
+    outline: none;
+    color: var(--lift-1);
+    font-weight: 600;
+    padding: 0.5em;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+}
+
+.maintence-box-inside:hover {
+    color: white;
+}
+
+/* .maintence-box{
+    display: flex;
+    flex-direction: column; 
+} */
+.maintence-box-inside-lifts {
+    position: absolute;
+    background-color: white;
+    width: 15%;
+    padding: 0.8em;
+    border-radius: 0.8em;
+    height: auto;
+    box-shadow: 3px 3px 15px #00000052;
+    z-index: 999;
+    margin: 0 0 0 0.6em;
+}
+
+.maintence-box-inside-lifts-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.9em;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 24px;
+    /* margin: 1.5em 0 0 0; */
+    text-align: center;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 17px;
+    left: 5px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--floor);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.lift-status {
+    outline: none;
+    color: var(--lift-1);
+    font-weight: 600;
+    padding: 0.5em;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+}
+
+.lift-status:hover {
+    color: white;
+}
+
+.lift-status-item {
+    position: absolute;
+    background-color: white;
+    width: 15%;
+    padding: 0.8em;
+    border-radius: 0.8em;
+    height: auto;
+    box-shadow: 3px 3px 15px #00000052;
+    z-index: 999;
+    margin: 0 0 0 0.6em;
+}
+
+.lift-status-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 0.5em;
+}
+
+.customized-button {
+    outline: none;
+    color: var(--lift-1);
+    font-weight: 600;
+    padding: 0.5em;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+}
+
+.customized-button:hover {
+    color: white;
+}
+
+.customized-inside {
+    position: absolute;
+    background-color: white;
+    width: fit-content;
+    padding: 0.8em;
+    border-radius: 0.8em;
+    height: auto;
+    box-shadow: 3px 3px 15px #00000052;
+    z-index: 999;
+    margin: 0 0 0 0.6em;
+    display: flex;
+    flex-direction: column;
+}
+
+.customized-inside .radio-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.customized-inside div {
+    padding: 0.5rem;
+}
+
+.customized-inside .buttons:hover {
+    cursor: pointer;
+    background-color: rgb(216, 211, 211);
+}
+
+.customized-inside button {
+    font-size: 1rem;
+    border: none;
+    background: none;
+    text-align: center;
+    width: 100%;
+}
+
+.customized-inside-other-button {
+    position: relative;
+}
+
+.other-data {
+    position: absolute;
+    left: 9rem;
+    top: 0rem;
+    background-color: white;
+    width: fit-content;
+    padding: 0.8em;
+    border-radius: 0.8em;
+    height: 5rem;
+    box-shadow: 3px 3px 15px #00000052;
+    z-index: 999;
+    margin: 0 0 0 0.6em;
+}
+
+.customized-inside-other-text {
+    margin: 0.8rem 0.5rem;
+    padding: 0.2rem;
+}
+
+.other-text-label {
+    margin: 1rem 0 0 0.5rem;
+}
+
+.report-button {
+    outline: none;
+    color: var(--lift-1);
+    font-weight: 600;
+    padding: 0.5em;
+    font-size: 1em;
+    background: none;
+    border: none;
+    width: fit-content;
+    cursor: pointer;
+    position: relative;
+}
+
+.report-button:hover {
+    color: white;
+}
+
+.report .history-table {
+    position: absolute;
+    right: 2%;
+    top: 7%;
+    height: 18em;
+    width: fit-content;
+    background-color: var(--floor);
+    z-index: 999;
+    font-weight: bold;
+    overflow-y: scroll;
+}
+
+.table-upper .table-header td {
+    padding: 1.5em;
+    border: none;
+    text-align: center;
+    color: var(--lift-1);
+}
+
+.table-row td {
+    padding: 1.5em;
+    border: none;
+    text-align: center;
+    color: var(--lift-1);
+}
+
+.pop-up-parent {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pop-up-box {
+    background-color: white;
+    padding: 1em;
+    width: 25rem;
+    height: 15rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: flex-end;
+    border-radius: 0.8em;
+    box-shadow: 3px 3px 15px #00000052;
+    z-index: 999;
+}
+
+.pop-up-box-control {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.pop-up-box-text {
+    display: flex;
+    flex-direction: column;
+    margin: 0.5em;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.pop-up-box-text label {
+    padding: 0.5rem;
+
+}
+
+.pop-up-box-text input {
+    padding: 0.6rem;
+    border: none;
+    border-bottom: 1px solid black;
+    background: none;
+}
+
+.pop-up-box-text input:focus {
+    outline: none;
+    border-bottom: 2px solid black;
+}
+
+.ok {
+    text-align: center;
+    margin: 0 1rem 0 0;
+    cursor: pointer;
+}
+
+.cancel {
+    text-align: center;
+    cursor: pointers;
+    border: 2px solid rgb(150, 150, 150);
+    border-radius: 0.4em;
+}
+
+.pop-up-box .ok-button {
+    border: none;
+    background-color: rgba(60, 60, 225, 0.95);
+    color: white;
+    padding: 1em;
+    border-radius: 0.5em;
+    font-weight: 600;
+    width: 100%;
+}
+
+.pop-up-box .cancel-button {
+    border: none;
+    background: white;
+    color: rgba(60, 60, 225, 0.95);
+    padding: 0.8em;
+    border-radius: 0.5em;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.overlay {
+    position: fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(3px);
+}
+
+.hidden {
+    display: none;
 }

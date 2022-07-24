@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +8,64 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+    <div class="header">
+        <div class="change"><button class="change-button">Change</button></div>
+        <div class="maintence-box"><button class="maintence-box-inside">Maintence</button>
+            <div class="maintence-box-inside-lifts hidden"></div>
+        </div>
+        <div class="status"><button class="lift-status">Lift Status</button>
+            <div class="lift-status-item hidden"></div>
+        </div>
+        <div class="customized"><button class="customized-button">Customized</button>
+            <div class="customized-inside hidden">
+                <div class="radio-button">
+                    <div><input type="radio" id="radio-1" name="switch">
+                        <label for="radio-1">On</label>
+                    </div>
+                    <div><input type="radio" id="radio-2" name="switch">
+                        <label for="radio-2">Off</label>
+                    </div>
+                </div>
+                <div class="buttons" id="all" onclick="customized(id)"><button
+                        class="customized-inside-all">All</button></div>
+                <div class="buttons" id="even" onclick="customized(id)"><button
+                        class="customized-inside-even">Even</button></div>
+                <div class="buttons" id="odd" onclick="customized(id)"><button
+                        class="customized-inside-odd">Odd</button></div>
+                <div class="buttons customized-inside-other-button" id="other" onclick="customized(id)"><button
+                        class="customized-inside-other">Other</button>
+                    <div class="other-data hidden"><label for="customized-other-text" class="other-text-label">Enter
+                            Lift No.</label><input type="text" name="other" id="customized-other-text"
+                            class="customized-inside-other-text" placeholder="e.g. 1,5"></div>
+                </div>
+            </div>
+        </div>
+        <div class="report"><button class="report-button">Report</button>
+            <div class="history-table hidden">
+                <table class="table-upper">
+                    <!-- <tr class="table-header">
+                        <td> LiftNumber </td>
+                        <td> From </td>
+                        <td> To </td>
+                        <td> Date </td>
+                        <td> Time </td>
+                    </tr> -->
+                    <!-- <tr class="table-row"> -->
+                    <!-- <td> a </td>
+                        <td> b </td>
+                        <td> c </td>
+                        <td> d </td>
+                        <td> e </td> -->
+                    <!-- </tr> -->
+                </table>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="liftClass">
+            <div class="liftClass-inside"></div>
             <!-- <div class="lift-1 lift"><div class="lift-box">1</div></div>
             <div class="lift-2 lift"><div class="lift-box">1</div></div>
             <div class="lift-3 lift"><div class="lift-box">1</div></div> -->
@@ -17,6 +73,23 @@
             <div class="floorClass"></div>
         </div>
     </div>
+    <div class="overlay hidden"></div>
+    <div class="pop-up-parent">
+        <div class="pop-up-box hidden">
+            <div class="pop-up-box-text">
+                <label for="lift-Number">Enter no. of Lifts</label>
+                <input type="text" id="lift-number" placeholder="e.g. 5">
+
+                <label for="floor-Number">Enter no. of floors</label>
+                <input type="text" id="floor-number" placeholder="e.g. 5">
+            </div>
+            <div class="pop-up-box-control">
+                <div class="ok"><button class="ok-button" onclick="okButton()">OK</button></div>
+                <div class="cancel"><button class="cancel-button" onclick="cancelButton()">Cancel</button></div>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
