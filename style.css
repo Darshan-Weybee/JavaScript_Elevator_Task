@@ -50,11 +50,22 @@ body {
 .change-button:hover {
     color: white;
 }
-
+.total{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
+}
+.upper-name, .lower-name{
+    font-weight: bold;
+    color: var(--floor);
+}
 .liftClass {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 }
 
 .liftClass-inside {

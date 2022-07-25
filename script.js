@@ -21,7 +21,7 @@ function setLift(liftNum = 3, floorNum = 5) {
     floorClass.innerHTML = "";
     liftObj = [];
     for (let i = 0; i < liftNum; i++) {
-        let liftData = `<div class="lift" id="lift-${i}"><div class="lift-box" id="lift-box-${i}">0</div></div>`
+        let liftData = `<div class="total"><div class="upper-name">Lift-${i}</div><div class="lift" id="lift-${i}"><div class="lift-box" id="lift-box-${i}">0</div></div><div class="lower-name">Lift-${i}</div></div>`
         liftClass.insertAdjacentHTML("afterbegin", liftData);
 
         liftObj.push({ liftId: `lift-${i}`, liftNumber: `${i}`, liftBoxNumber: `${i}`, liftPosition: 0, maintence: false, isChecked: false, isAvailable: "Available" });
@@ -165,6 +165,7 @@ function okButton() {
     document.querySelector(".pop-up-box").classList.add("hidden");
     document.querySelector(".overlay").classList.add("hidden");
     setLift(numberOfLift, numberOfFloor);
+    localStorage.clear();
 }
 function cancelButton() {
     document.querySelector(".pop-up-box").classList.add("hidden");
@@ -193,8 +194,8 @@ function displayHistory() {
             <td> LiftNumber </td>
             <td> From </td>
             <td> To </td>
-            <td> Date </td>
             <td> Time </td>
+            <td> Date </td>
         </tr>`;
     document.querySelector(".table-upper").insertAdjacentHTML("afterbegin", first);
     for (let i = 0; i < keys.length; i++) {
